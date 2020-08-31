@@ -1,0 +1,13 @@
+eclipse.preferences.version=1
+encoding//src/main/java=UTF-8
+encoding//src/main/java/com/hlbrc/action=GBK
+encoding//src/main/java/com/hlbrc/action/ChatsAction.java=GBK
+encoding//src/main/java/com/hlbrc/action/WebSocketService.java=GBK
+encoding//src/main/java/com/hlbrc/biz=GBK
+encoding//src/main/java/com/hlbrc/entity=GBK
+encoding//src/main/java/com/hlbrc/enums=GBK
+encoding//src/main/java/com/hlbrc/filter=GBK
+encoding//src/main/java/com/hlbrc/mapper=GBK
+encoding//src/main/java/com/hlbrc/util=GBK
+encoding//src/main/java/com/hlbrc/util/HttpUtils.java=UTF-8
+encoding//src/test/java=UTF-8

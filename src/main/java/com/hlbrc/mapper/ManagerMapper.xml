@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hlbrc.mapper.IManagerMapper">
+
+	<insert id="insert" parameterType="Manager">
+	insert into manager (manager_name,manager_age,manager_sex,manager_password,manager_birth_time,manager_email,manager_tel,manager_idcard_num,dis_id,manager_regist_time,manager_img_path,manager_type)
+	values(#{manager_name},#{manager_age},#{manager_sex},#{manager_password},#{manager_birth_time},#{manager_email},#{manager_tel},#{manager_idcard_num},#{district.dis_id},#{manager_regist_time},#{manager_img_path},#{manager_type})
+	</insert>
+	
+	<resultMap type="Manager" id="Manager_Map">
+		<id property="manager_id" column="manager_id"/>
+		<result property="manager_name" column="manager_name"/>
+		<result property="manager_age" column="manager_age"/>
+		<result property="manager_sex" column="manager_sex"/>
+		<result property="manager_password" column="manager_password"/>
+		<result property="manager_birth_time" column="manager_birth_time"/>
+		<result property="manager_email" column="manager_email"/>
+		<result property="manager_tel" column="manager_tel"/>
+		<result property="manager_idcard_num" column="manager_idcard_num"/>
+		<result property="manager_regist_time" column="manager_regist_time"/>
+		<result property="manager_img_path" column="manager_img_path"/>
+		<result property="manager_type" column="manager_type"/>
+		<association property="district" javaType="District">
+			<id property="dis_id" column="dis_id"/>
+			<result property="dis_name" column="dis_name"/>
+		</association>
+		<association property="city" javaType="City">
+			<id property="cit_id" column="cit_id"/>
+			<result property="cit_name" column="cit_name"/>
+		</association>
+		<association property="privince" javaType="Privince">
+			<id property="pro_id" column="pro_id"/>
+			<result property="pro_name" column="pro_name"/>
+		</association>
+		<collection property="profileimg" ofType="Profileimg">            
+			<id property="pro_file_img_id" column="pro_file_img_id"/>
+			<result property="pro_file_img_path" column="pro_path"/>
+			<result property="creat_time" column="pro_creat_time"/>
+			<result property="pro_file_img_type" column="pro_file_img_type"/>
+		</collection>
+	</resultMap>
+
+	<select id="queryAll" resultMap="Manager_Map">
+		SELECT
+		manager.manager_id,
+		manager.dis_id,
+		manager.manager_name,
+		manager.manager_age,
+		manager.manager_sex,
+		manager.manager_password,
+		manager.manager_birth_time,
+		manager.manager_email,
+		manager.manager_tel,
+		manager.manager_idcard_num,
+		manager.manager_regist_time,
+		manager.manager_img_path,
+		manager.manager_type,
+		manager.manager_state,
+		privince.pro_name,
+		city.cit_name,
+		district.dis_name,
+		MAX(pro_file_img.pro_file_img_path) pro_path,
+		pro_file_img.pro_file_img_type,
+		MAX(pro_file_img.creat_time) pro_creat_time
+		FROM
+		city
+		INNER JOIN district ON district.cit_id = city.cit_id
+		INNER JOIN privince ON city.pro_id = privince.pro_id
+		INNER JOIN manager ON manager.dis_id = district.dis_id
+		LEFT JOIN pro_file_img ON pro_file_img.manager_id = manager.manager_id
+		GROUP BY pro_file_img.manager_id,IFNULL(pro_file_img.pro_file_img_type,UUID())
+	</select>
+	
+	<select id="queryAll_not" resultMap="Manager_Map">
+		SELECT
+		manager.manager_id,
+		manager.dis_id,
+		manager.manager_name,
+		manager.manager_age,
+		manager.manager_sex,
+		manager.manager_password,
+		manager.manager_birth_time,
+		manager.manager_email,
+		manager.manager_tel,
+		manager.manager_idcard_num,
+		manager.manager_regist_time,
+		manager.manager_img_path,
+		manager.manager_type,
+		manager.manager_state,
+		privince.pro_name,
+		city.cit_name,
+		district.dis_name,
+		MAX(pro_file_img.pro_file_img_path) pro_path,
+		pro_file_img.pro_file_img_type,
+		MAX(pro_file_img.creat_time) pro_creat_time
+		FROM
+		city
+		INNER JOIN district ON district.cit_id = city.cit_id
+		INNER JOIN privince ON city.pro_id = privince.pro_id
+		INNER JOIN manager ON manager.dis_id = district.dis_id
+		LEFT JOIN pro_file_img ON pro_file_img.manager_id = manager.manager_id
+		WHERE manager.manager_tel != #{manager_tel}
+		GROUP BY pro_file_img.manager_id,IFNULL(pro_file_img.pro_file_img_type,UUID())
+	</select>
+
+	<select id="queryByTel" resultMap="Manager_Map">
+		SELECT
+		manager.manager_id,
+		manager.dis_id,
+		manager.manager_name,
+		manager.manager_age,
+		manager.manager_sex,
+		manager.manager_password,
+		manager.manager_birth_time,
+		manager.manager_email,
+		manager.manager_tel,
+		manager.manager_idcard_num,
+		manager.manager_regist_time,
+		manager.manager_img_path,
+		manager.manager_type,
+		manager.manager_state,
+		privince.pro_name,
+		city.cit_name,
+		district.dis_name,
+		MAX(pro_file_img.pro_file_img_path) pro_path,
+		pro_file_img.pro_file_img_type,
+		MAX(pro_file_img.creat_time) pro_creat_time
+		FROM
+		city
+		INNER JOIN district ON district.cit_id = city.cit_id
+		INNER JOIN privince ON city.pro_id = privince.pro_id
+		INNER JOIN manager ON manager.dis_id = district.dis_id
+		LEFT JOIN pro_file_img ON pro_file_img.manager_id = manager.manager_id
+		WHERE manager.manager_tel = #{manager_tel}
+		GROUP BY pro_file_img.manager_id,IFNULL(pro_file_img.pro_file_img_type,UUID())
+	</select>
+
+	<select id="queryById" resultType="Manager">
+		select * from manager where manager_id=#{manager_id}
+	</select>
+
+	 <select id="queryManager" resultType="Manager">
+		select * from manager 
+		 <if test="manager_name != null and manager_name !=''">
+			where manager_name like CONCAT('%',CONCAT(#{manager_name},'%')) 
+		 </if>
+		  limit #{startIndex} , #{onePageCount}
+	</select>
+
+	<select id="countAll" resultType="int" >
+   		select count(*) from manager
+	</select>
+
+	<select id="countManager" resultType="int" >
+   		select count(*) from manager 
+   		 <if test="manager_name != null and manager_name !=''">
+			where manager_name like CONCAT('%',CONCAT(#{manager_name},'%')) 
+		 </if>
+	</select>
+	
+	<update id="update" parameterType="Manager">
+  		 update manager set manager_name=#{manager_name},manager_age=#{manager_age},manager_sex=#{manager_sex},manager_password=#{manager_password},manager_birth_time=#{manager_birth_time},manager_email=#{manager_email},manager_idcard_num=#{manager_idcard_num},dis_id=#{district.dis_id},manager_img_path=#{manager_img_path},manager_tel=#{manager_tel} where manager_id=#{manager_id}
+	</update>
+	
+	<update id="creatMessageTable" parameterType="String">
+		create table IF NOT EXISTS ${table_name} 
+		(
+		   message_id          int(50)                        not null AUTO_INCREMENT,
+		   sender_id            int(50)                        null,
+		   content              varchar(2000)                  null,
+		   content_type         int(10)                        null,
+		   flag                 varchar(10)                    null,
+		   accepter_id          int(50)                        null,
+		   table_name_sender    varchar(15)                    null,
+		   table_name_accepter  varchar(15)                    null,
+		   creat_time           datetime                       null,
+		   isself               varchar(5)                     null,
+		   constraint PK_MESSAGE primary key clustered (message_id)
+		);
+	</update>
+	
+	<delete id="deleteById">
+		 delete from manager where manager_id=#{manager_id}
+	</delete>
+
+</mapper>

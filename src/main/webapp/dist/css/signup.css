@@ -1,0 +1,27 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.relative {
+	position: relative;
+}
+.absolute_btn {
+	position: absolute;
+	top:43%;
+	left: 58%;
+}
+
+.absolute_btn_pwdver {
+	position: absolute;
+	top:43%;
+	left: 77%;
+}
+
+.width_55{
+	width: 55%;
+}
+
+.width_75{
+	width: 75%;
+}

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hlbrc.mapper.IStoreMapper">
+
+<insert id="insert"  parameterType="Store">
+	insert into store (store_name,store_address,store_type,store_regist_time,store_state,store_manager_id,store_manager_name)
+	values(#{store_name},#{store_address},#{store_type},#{store_regist_time},#{store_state},#{store_manager_id},#{store_manager_name})
+</insert>
+
+	<select id="countAll" resultType="int" >
+   		select count(*) from store
+	</select>
+
+	<select id="queryAll" resultType="Store">
+		select * from store 
+	</select>
+
+	<select id="queryByTel" resultType="Store">
+		select * from store where store_manager_id=#{store_manager_id}
+	</select>
+
+	<select id="queryById" resultType="Store">
+		select * from store where store_id=#{store_id}
+	</select>
+		
+	<select id="queryStore" resultType="Store">
+		select * from store where 1=1  
+		 <if test="column == 'store_name'">
+			and store_name like CONCAT('%',CONCAT(#{value},'%')) 
+		 </if>
+		 <if test="column == 'store_type'">
+			and store_type like CONCAT('%',CONCAT(#{value},'%')) 
+		 </if>
+		  
+		 <if test="column == 'store_manager_name'">
+			and store_manager_name like CONCAT('%',CONCAT(#{value},'%')) 
+		 </if>
+		 <if test="column == 'store_regist_time'">
+			and store_regist_time like CONCAT('%',CONCAT(#{value},'%')) 
+		 </if>
+		 <if test="column == 'store_state'">
+			and store_state like CONCAT('%',CONCAT(#{value},'%')) 
+		 </if>
+		 
+	</select> 
+
+
+	 <select id="countStore" resultType="int" >
+   		select count(*) from store
+   		<if test="column == 'store_name'">
+			where store_name like CONCAT('%',CONCAT(#{value},'%')) 
+		 </if>
+		 <if test="column == 'store_type'">
+			where store_type like CONCAT('%',CONCAT(#{value},'%')) 
+		 </if>
+		 <if test="column == 'store_manager_name'">
+			where store_manager_name like CONCAT('%',CONCAT(#{value},'%')) 
+		 </if>
+		 <if test="column == 'store_regist_time'">
+			where store_regist_time like CONCAT('%',CONCAT(#{value},'%')) 
+		 </if>
+		 <if test="column == 'store_state'">
+			where store_state like CONCAT('%',CONCAT(#{value},'%')) 
+		 </if>	 
+	</select> 
+	
+	<update id="update">
+  		 update store set store_name=#{store_name},store_address=#{store_address},store_type=#{store_type},store_state=#{store_state},store_manager_name=#{store_manager_name} where store_id=#{store_id}
+	</update>
+	
+	<delete id="deleteById">
+		 delete from store where store_id=#{store_id}
+	</delete>
+	
+	<update id="setstop">
+  		 update store set store_state=0 where store_id=#{store_id}
+	</update>
+	
+	<update id="setstart">
+  		 update store set store_state=1 where store_id=#{store_id}
+	</update>
+	
+</mapper>

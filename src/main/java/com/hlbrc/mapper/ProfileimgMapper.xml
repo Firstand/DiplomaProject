@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hlbrc.mapper.IProfileimgMapper">
+	<insert id="insertImg" parameterType="Profileimg">
+		insert into pro_file_img (pro_file_img_path,pro_file_img_type,manager_id,creat_time)
+		values(#{pro_file_img_path},#{pro_file_img_type},#{manager.manager_id},#{creat_time})
+	</insert>
+</mapper>
