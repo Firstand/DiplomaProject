@@ -841,7 +841,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												</div>
 												<div>
 													<span class="inline-block capitalize-font mr-5">销售额:</span>
-													<span class="txt-dark">$${m_not.district.dis_id-(num.count*20000) }</span>
+													<span class="txt-dark">$${m_not.district.disId-(num.count*20000) }</span>
 												</div>
 											</div>
 										</div>

@@ -23,16 +23,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="manager_img_path" column="manager_img_path"/>
 		<result property="manager_type" column="manager_type"/>
 		<association property="district" javaType="District">
-			<id property="dis_id" column="dis_id"/>
-			<result property="dis_name" column="dis_name"/>
+			<id property="disId" column="dis_id"/>
+			<result property="disName" column="dis_name"/>
 		</association>
 		<association property="city" javaType="City">
-			<id property="cit_id" column="cit_id"/>
-			<result property="cit_name" column="cit_name"/>
+			<id property="citId" column="cit_id"/>
+			<result property="citName" column="cit_name"/>
 		</association>
 		<association property="privince" javaType="Privince">
-			<id property="pro_id" column="pro_id"/>
-			<result property="pro_name" column="pro_name"/>
+			<id property="proId" column="pro_id"/>
+			<result property="proName" column="pro_name"/>
 		</association>
 		<collection property="profileimg" ofType="Profileimg">            
 			<id property="pro_file_img_id" column="pro_file_img_id"/>

@@ -12,40 +12,16 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="City" type="com.hlbrc.entity.City" />
 		<typeAlias alias="Privince" type="com.hlbrc.entity.Privince" />
 		<typeAlias alias="Profileimg" type="com.hlbrc.entity.Profileimg" />
-		<!-- <typeAlias alias="Grand" type="com.hlbrc.entity.User_grand_set" />
-		<typeAlias alias="Integral" type="com.hlbrc.entity.User_integral_set" />
-		<typeAlias alias="Table" type="com.hlbrc.entity.Table_set" />
-		<typeAlias alias="Notice" type="com.hlbrc.entity.Notice" />
-		<typeAlias alias="Ckstate" type="com.hlbrc.entity.Notice_ckstate" />
-		<typeAlias alias="Meal_select" type="com.hlbrc.entity.Meal_select" />
-		<typeAlias alias="Meal_type" type="com.hlbrc.entity.Meal_type" />	
-		<typeAlias alias="Meal" type="com.hlbrc.entity.Meal" />
-		<typeAlias alias="Order_detail" type="com.hlbrc.entity.Order_detail" />	
-		<typeAlias alias="Order" type="com.hlbrc.entity.Order" />
-		<typeAlias alias="User" type="com.hlbrc.entity.User" />
-		<typeAlias alias="Employee" type="com.hlbrc.entity.Employee" />
-		<typeAlias alias="Inventory_in" type="com.hlbrc.entity.Inventory_in" />
-		<typeAlias alias="Inventory_out" type="com.hlbrc.entity.Inventory_out" />
-		<typeAlias alias="Inventory" type="com.hlbrc.entity.Inventory" />
-		<typeAlias alias="Shopcar" type="com.hlbrc.dto.Shopcar" />	
-		<typeAlias alias="Detail" type="com.hlbrc.dto.Detail" />
-		<typeAlias alias="Tmeal" type="com.hlbrc.dto.Tmeal" /> -->
 	</typeAliases>
 	<mappers>
 		<mapper resource="com/hlbrc/mapper/StoreMapper.xml" />
 		<mapper resource="com/hlbrc/mapper/ManagerMapper.xml" />
 		<mapper resource="com/hlbrc/mapper/MessageMapper.xml" />
 		<mapper resource="com/hlbrc/mapper/ProfileimgMapper.xml" />
-		<!-- <mapper resource="com/hlbrc/mapper/SetMapper.xml" />
-		<mapper resource="com/hlbrc/mapper/NoticeMapper.xml" />
-		<mapper resource="com/hlbrc/mapper/MealMapper.xml" />
-		<mapper resource="com/hlbrc/mapper/Meal_SelectMapper.xml" />
-		<mapper resource="com/hlbrc/mapper/Meal_TypeMapper.xml" />
-		<mapper resource="com/hlbrc/mapper/MemberMapper.xml" />
-		<mapper resource="com/hlbrc/mapper/EmployeeMapper.xml" />
-		<mapper resource="com/hlbrc/mapper/WarehouseMapper.xml" />
-		<mapper resource="com/hlbrc/mapper/Order_DetailMapper.xml" />
-		<mapper resource="com/hlbrc/mapper/OrderMapper.xml" /> -->
+		<mapper resource="com/hlbrc/mapper/AddressMapper.xml" />
+		<mapper resource="com/hlbrc/mapper/PrivinceMapper.xml" />
+		<mapper resource="com/hlbrc/mapper/CityMapper.xml" />
+		<mapper resource="com/hlbrc/mapper/DistrictMapper.xml" />
 	</mappers>
 </configuration>
 

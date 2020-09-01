@@ -1,36 +1,33 @@
 package com.hlbrc.entity;
 
-import java.io.Serializable;
+public class City {
+    private Integer citId;
 
-/**
- * ÊÐ ÊµÌå²ã
- * @author ZY
- *
- */
-public class City implements Serializable{
-	private static final long serialVersionUID = 1L;
-	
-	private int cit_id;
-	private String cit_name; 
-	private Privince privince;
-	
-	public int getCit_id() {
-		return cit_id;
-	}
-	public void setCit_id(int cit_id) {
-		this.cit_id = cit_id;
-	}
-	public String getCit_name() {
-		return cit_name;
-	}
-	public void setCit_name(String cit_name) {
-		this.cit_name = cit_name;
-	}
-	public Privince getPrivince() {
-		return privince;
-	}
-	public void setPrivince(Privince privince) {
-		this.privince = privince;
-	}
-	
+    private String citName;
+
+    private Integer proId;
+
+    public Integer getCitId() {
+        return citId;
+    }
+
+    public void setCitId(Integer citId) {
+        this.citId = citId;
+    }
+
+    public String getCitName() {
+        return citName;
+    }
+
+    public void setCitName(String citName) {
+        this.citName = citName == null ? null : citName.trim();
+    }
+
+    public Integer getProId() {
+        return proId;
+    }
+
+    public void setProId(Integer proId) {
+        this.proId = proId;
+    }
 }

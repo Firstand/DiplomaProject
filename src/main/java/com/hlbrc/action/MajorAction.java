@@ -149,7 +149,7 @@ public class MajorAction {
 				//添加管理员表
 				Manager m=new Manager();
 				District d = new District();
-				d.setDis_id(dis_id);
+				d.setDisId(dis_id);
 				m.setDistrict(d);
 				m.setManager_name(u_name);
 				m.setManager_age(age);
