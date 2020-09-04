@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hlbrc.mapper.IUsercollectMapper">
+  <resultMap id="BaseResultMap" type="com.hlbrc.entity.Usercollect">
+    <id column="user_collect_id" jdbcType="INTEGER" property="userCollectId" />
+    <result column="productId" jdbcType="INTEGER" property="productid" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="upd_manager_id" jdbcType="INTEGER" property="updManagerId" />
+    <result column="cre_manager_id" jdbcType="INTEGER" property="creManagerId" />
+    <result column="creat_time" jdbcType="TIMESTAMP" property="creatTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    user_collect_id, productId, update_time, upd_manager_id, cre_manager_id, creat_time
+  </sql>
+  <select id="selectByExample" parameterType="com.hlbrc.entity.UsercollectExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from usercollect
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from usercollect
+    where user_collect_id = #{userCollectId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from usercollect
+    where user_collect_id = #{userCollectId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.hlbrc.entity.UsercollectExample">
+    delete from usercollect
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hlbrc.entity.Usercollect">
+    insert into usercollect (user_collect_id, productId, update_time, 
+      upd_manager_id, cre_manager_id, creat_time
+      )
+    values (#{userCollectId,jdbcType=INTEGER}, #{productid,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{updManagerId,jdbcType=INTEGER}, #{creManagerId,jdbcType=INTEGER}, #{creatTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hlbrc.entity.Usercollect">
+    insert into usercollect
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userCollectId != null">
+        user_collect_id,
+      </if>
+      <if test="productid != null">
+        productId,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="updManagerId != null">
+        upd_manager_id,
+      </if>
+      <if test="creManagerId != null">
+        cre_manager_id,
+      </if>
+      <if test="creatTime != null">
+        creat_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userCollectId != null">
+        #{userCollectId,jdbcType=INTEGER},
+      </if>
+      <if test="productid != null">
+        #{productid,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updManagerId != null">
+        #{updManagerId,jdbcType=INTEGER},
+      </if>
+      <if test="creManagerId != null">
+        #{creManagerId,jdbcType=INTEGER},
+      </if>
+      <if test="creatTime != null">
+        #{creatTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hlbrc.entity.UsercollectExample" resultType="java.lang.Long">
+    select count(*) from usercollect
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update usercollect
+    <set>
+      <if test="record.userCollectId != null">
+        user_collect_id = #{record.userCollectId,jdbcType=INTEGER},
+      </if>
+      <if test="record.productid != null">
+        productId = #{record.productid,jdbcType=INTEGER},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updManagerId != null">
+        upd_manager_id = #{record.updManagerId,jdbcType=INTEGER},
+      </if>
+      <if test="record.creManagerId != null">
+        cre_manager_id = #{record.creManagerId,jdbcType=INTEGER},
+      </if>
+      <if test="record.creatTime != null">
+        creat_time = #{record.creatTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update usercollect
+    set user_collect_id = #{record.userCollectId,jdbcType=INTEGER},
+      productId = #{record.productid,jdbcType=INTEGER},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      upd_manager_id = #{record.updManagerId,jdbcType=INTEGER},
+      cre_manager_id = #{record.creManagerId,jdbcType=INTEGER},
+      creat_time = #{record.creatTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hlbrc.entity.Usercollect">
+    update usercollect
+    <set>
+      <if test="productid != null">
+        productId = #{productid,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updManagerId != null">
+        upd_manager_id = #{updManagerId,jdbcType=INTEGER},
+      </if>
+      <if test="creManagerId != null">
+        cre_manager_id = #{creManagerId,jdbcType=INTEGER},
+      </if>
+      <if test="creatTime != null">
+        creat_time = #{creatTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where user_collect_id = #{userCollectId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hlbrc.entity.Usercollect">
+    update usercollect
+    set productId = #{productid,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      upd_manager_id = #{updManagerId,jdbcType=INTEGER},
+      cre_manager_id = #{creManagerId,jdbcType=INTEGER},
+      creat_time = #{creatTime,jdbcType=TIMESTAMP}
+    where user_collect_id = #{userCollectId,jdbcType=INTEGER}
+  </update>
+</mapper>

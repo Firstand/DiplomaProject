@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hlbrc.mapper.IUserfuntionMapper">
+  <resultMap id="BaseResultMap" type="com.hlbrc.entity.Userfuntion">
+    <id column="user_funtion_id" jdbcType="INTEGER" property="userFuntionId" />
+    <result column="account_group_id" jdbcType="INTEGER" property="accountGroupId" />
+    <result column="user_funtion_no" jdbcType="VARCHAR" property="userFuntionNo" />
+    <result column="user_funtion_name" jdbcType="VARCHAR" property="userFuntionName" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="upd_manager_id" jdbcType="INTEGER" property="updManagerId" />
+    <result column="cre_manager_id" jdbcType="INTEGER" property="creManagerId" />
+    <result column="creat_time" jdbcType="TIMESTAMP" property="creatTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    user_funtion_id, account_group_id, user_funtion_no, user_funtion_name, update_time, 
+    upd_manager_id, cre_manager_id, creat_time
+  </sql>
+  <select id="selectByExample" parameterType="com.hlbrc.entity.UserfuntionExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from userfuntion
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from userfuntion
+    where user_funtion_id = #{userFuntionId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from userfuntion
+    where user_funtion_id = #{userFuntionId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.hlbrc.entity.UserfuntionExample">
+    delete from userfuntion
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hlbrc.entity.Userfuntion">
+    insert into userfuntion (user_funtion_id, account_group_id, user_funtion_no, 
+      user_funtion_name, update_time, upd_manager_id, 
+      cre_manager_id, creat_time)
+    values (#{userFuntionId,jdbcType=INTEGER}, #{accountGroupId,jdbcType=INTEGER}, #{userFuntionNo,jdbcType=VARCHAR}, 
+      #{userFuntionName,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{updManagerId,jdbcType=INTEGER}, 
+      #{creManagerId,jdbcType=INTEGER}, #{creatTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hlbrc.entity.Userfuntion">
+    insert into userfuntion
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userFuntionId != null">
+        user_funtion_id,
+      </if>
+      <if test="accountGroupId != null">
+        account_group_id,
+      </if>
+      <if test="userFuntionNo != null">
+        user_funtion_no,
+      </if>
+      <if test="userFuntionName != null">
+        user_funtion_name,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="updManagerId != null">
+        upd_manager_id,
+      </if>
+      <if test="creManagerId != null">
+        cre_manager_id,
+      </if>
+      <if test="creatTime != null">
+        creat_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userFuntionId != null">
+        #{userFuntionId,jdbcType=INTEGER},
+      </if>
+      <if test="accountGroupId != null">
+        #{accountGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="userFuntionNo != null">
+        #{userFuntionNo,jdbcType=VARCHAR},
+      </if>
+      <if test="userFuntionName != null">
+        #{userFuntionName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updManagerId != null">
+        #{updManagerId,jdbcType=INTEGER},
+      </if>
+      <if test="creManagerId != null">
+        #{creManagerId,jdbcType=INTEGER},
+      </if>
+      <if test="creatTime != null">
+        #{creatTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hlbrc.entity.UserfuntionExample" resultType="java.lang.Long">
+    select count(*) from userfuntion
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update userfuntion
+    <set>
+      <if test="record.userFuntionId != null">
+        user_funtion_id = #{record.userFuntionId,jdbcType=INTEGER},
+      </if>
+      <if test="record.accountGroupId != null">
+        account_group_id = #{record.accountGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="record.userFuntionNo != null">
+        user_funtion_no = #{record.userFuntionNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userFuntionName != null">
+        user_funtion_name = #{record.userFuntionName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updManagerId != null">
+        upd_manager_id = #{record.updManagerId,jdbcType=INTEGER},
+      </if>
+      <if test="record.creManagerId != null">
+        cre_manager_id = #{record.creManagerId,jdbcType=INTEGER},
+      </if>
+      <if test="record.creatTime != null">
+        creat_time = #{record.creatTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update userfuntion
+    set user_funtion_id = #{record.userFuntionId,jdbcType=INTEGER},
+      account_group_id = #{record.accountGroupId,jdbcType=INTEGER},
+      user_funtion_no = #{record.userFuntionNo,jdbcType=VARCHAR},
+      user_funtion_name = #{record.userFuntionName,jdbcType=VARCHAR},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      upd_manager_id = #{record.updManagerId,jdbcType=INTEGER},
+      cre_manager_id = #{record.creManagerId,jdbcType=INTEGER},
+      creat_time = #{record.creatTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hlbrc.entity.Userfuntion">
+    update userfuntion
+    <set>
+      <if test="accountGroupId != null">
+        account_group_id = #{accountGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="userFuntionNo != null">
+        user_funtion_no = #{userFuntionNo,jdbcType=VARCHAR},
+      </if>
+      <if test="userFuntionName != null">
+        user_funtion_name = #{userFuntionName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updManagerId != null">
+        upd_manager_id = #{updManagerId,jdbcType=INTEGER},
+      </if>
+      <if test="creManagerId != null">
+        cre_manager_id = #{creManagerId,jdbcType=INTEGER},
+      </if>
+      <if test="creatTime != null">
+        creat_time = #{creatTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where user_funtion_id = #{userFuntionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hlbrc.entity.Userfuntion">
+    update userfuntion
+    set account_group_id = #{accountGroupId,jdbcType=INTEGER},
+      user_funtion_no = #{userFuntionNo,jdbcType=VARCHAR},
+      user_funtion_name = #{userFuntionName,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      upd_manager_id = #{updManagerId,jdbcType=INTEGER},
+      cre_manager_id = #{creManagerId,jdbcType=INTEGER},
+      creat_time = #{creatTime,jdbcType=TIMESTAMP}
+    where user_funtion_id = #{userFuntionId,jdbcType=INTEGER}
+  </update>
+</mapper>

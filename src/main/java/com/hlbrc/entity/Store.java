@@ -16,9 +16,38 @@ public class Store implements Serializable{
 	private String store_address;
 	private String store_type;
 	private String store_state;
+	public String getManager_tel() {
+		return manager_tel;
+	}
+	public void setManager_tel(String manager_tel) {
+		this.manager_tel = manager_tel;
+	}
+	public String getManager_second_id() {
+		return manager_second_id;
+	}
+	public void setManager_second_id(String manager_second_id) {
+		this.manager_second_id = manager_second_id;
+	}
+	public String getManager_second_name() {
+		return manager_second_name;
+	}
+	public void setManager_second_name(String manager_second_name) {
+		this.manager_second_name = manager_second_name;
+	}
+	public String getManager_second_tel() {
+		return manager_second_tel;
+	}
+	public void setManager_second_tel(String manager_second_tel) {
+		this.manager_second_tel = manager_second_tel;
+	}
 	private String store_manager_id;
 	private String store_manager_name;
+	private String manager_tel;
+	private String manager_second_id;
+	private String manager_second_name;
+	private String manager_second_tel;
 	private Timestamp store_regist_time;
+
 	public int getStore_id() {
 		return store_id;
 	}

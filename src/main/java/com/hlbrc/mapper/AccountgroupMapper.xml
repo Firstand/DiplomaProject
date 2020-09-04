@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hlbrc.mapper.IAccountgroupMapper">
+  <resultMap id="BaseResultMap" type="com.hlbrc.entity.Accountgroup">
+    <id column="account_group_id" jdbcType="INTEGER" property="accountGroupId" />
+    <result column="account_group_no" jdbcType="VARCHAR" property="accountGroupNo" />
+    <result column="account_group_name" jdbcType="VARCHAR" property="accountGroupName" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="cre_manager_id" jdbcType="INTEGER" property="creManagerId" />
+    <result column="upd_manager_id" jdbcType="INTEGER" property="updManagerId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    account_group_id, account_group_no, account_group_name, create_time, update_time, 
+    cre_manager_id, upd_manager_id
+  </sql>
+  <select id="selectByExample" parameterType="com.hlbrc.entity.AccountgroupExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from accountgroup
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from accountgroup
+    where account_group_id = #{accountGroupId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from accountgroup
+    where account_group_id = #{accountGroupId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.hlbrc.entity.AccountgroupExample">
+    delete from accountgroup
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hlbrc.entity.Accountgroup">
+    insert into accountgroup (account_group_id, account_group_no, account_group_name, 
+      create_time, update_time, cre_manager_id, 
+      upd_manager_id)
+    values (#{accountGroupId,jdbcType=INTEGER}, #{accountGroupNo,jdbcType=VARCHAR}, #{accountGroupName,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{creManagerId,jdbcType=INTEGER}, 
+      #{updManagerId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hlbrc.entity.Accountgroup">
+    insert into accountgroup
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="accountGroupId != null">
+        account_group_id,
+      </if>
+      <if test="accountGroupNo != null">
+        account_group_no,
+      </if>
+      <if test="accountGroupName != null">
+        account_group_name,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="creManagerId != null">
+        cre_manager_id,
+      </if>
+      <if test="updManagerId != null">
+        upd_manager_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="accountGroupId != null">
+        #{accountGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="accountGroupNo != null">
+        #{accountGroupNo,jdbcType=VARCHAR},
+      </if>
+      <if test="accountGroupName != null">
+        #{accountGroupName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creManagerId != null">
+        #{creManagerId,jdbcType=INTEGER},
+      </if>
+      <if test="updManagerId != null">
+        #{updManagerId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hlbrc.entity.AccountgroupExample" resultType="java.lang.Long">
+    select count(*) from accountgroup
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update accountgroup
+    <set>
+      <if test="record.accountGroupId != null">
+        account_group_id = #{record.accountGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="record.accountGroupNo != null">
+        account_group_no = #{record.accountGroupNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accountGroupName != null">
+        account_group_name = #{record.accountGroupName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.creManagerId != null">
+        cre_manager_id = #{record.creManagerId,jdbcType=INTEGER},
+      </if>
+      <if test="record.updManagerId != null">
+        upd_manager_id = #{record.updManagerId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update accountgroup
+    set account_group_id = #{record.accountGroupId,jdbcType=INTEGER},
+      account_group_no = #{record.accountGroupNo,jdbcType=VARCHAR},
+      account_group_name = #{record.accountGroupName,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      cre_manager_id = #{record.creManagerId,jdbcType=INTEGER},
+      upd_manager_id = #{record.updManagerId,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hlbrc.entity.Accountgroup">
+    update accountgroup
+    <set>
+      <if test="accountGroupNo != null">
+        account_group_no = #{accountGroupNo,jdbcType=VARCHAR},
+      </if>
+      <if test="accountGroupName != null">
+        account_group_name = #{accountGroupName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creManagerId != null">
+        cre_manager_id = #{creManagerId,jdbcType=INTEGER},
+      </if>
+      <if test="updManagerId != null">
+        upd_manager_id = #{updManagerId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where account_group_id = #{accountGroupId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hlbrc.entity.Accountgroup">
+    update accountgroup
+    set account_group_no = #{accountGroupNo,jdbcType=VARCHAR},
+      account_group_name = #{accountGroupName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      cre_manager_id = #{creManagerId,jdbcType=INTEGER},
+      upd_manager_id = #{updManagerId,jdbcType=INTEGER}
+    where account_group_id = #{accountGroupId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -22,6 +22,22 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="com/hlbrc/mapper/PrivinceMapper.xml" />
 		<mapper resource="com/hlbrc/mapper/CityMapper.xml" />
 		<mapper resource="com/hlbrc/mapper/DistrictMapper.xml" />
+		<mapper resource="com/hlbrc/mapper/AccountgroupMapper.xml" />
+		<mapper resource="com/hlbrc/mapper/BrandMapper.xml" />
+		<mapper resource="com/hlbrc/mapper/DiscountcouponMapper.xml" />
+		<mapper resource="com/hlbrc/mapper/GoodsclassMapper.xml" />
+		<mapper resource="com/hlbrc/mapper/GoodsdetailMapper.xml" />
+		<mapper resource="com/hlbrc/mapper/GoodspackagingMapper.xml" />
+		<mapper resource="com/hlbrc/mapper/GoodsphotoMapper.xml" />
+		<mapper resource="com/hlbrc/mapper/GoodspropertyMapper.xml" />
+		<mapper resource="com/hlbrc/mapper/MyorderMapper.xml" />
+		<mapper resource="com/hlbrc/mapper/NoticeMapper.xml" />
+		<mapper resource="com/hlbrc/mapper/OrderdetailMapper.xml" />
+		<mapper resource="com/hlbrc/mapper/ProductMapper.xml" />
+		<mapper resource="com/hlbrc/mapper/ShopcarMapper.xml" />
+		<mapper resource="com/hlbrc/mapper/UsercollectMapper.xml" />
+		<mapper resource="com/hlbrc/mapper/UserfuntionMapper.xml" />
+		<mapper resource="com/hlbrc/mapper/UserMapper.xml" />
 	</mappers>
 </configuration>
 

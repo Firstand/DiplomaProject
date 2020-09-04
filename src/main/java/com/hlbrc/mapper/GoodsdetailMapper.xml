@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hlbrc.mapper.IGoodsdetailMapper">
+  <resultMap id="BaseResultMap" type="com.hlbrc.entity.Goodsdetail">
+    <id column="goods_detail_id" jdbcType="INTEGER" property="goodsDetailId" />
+    <result column="productId" jdbcType="INTEGER" property="productid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="img_path" jdbcType="VARCHAR" property="imgPath" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="cre_manager_id" jdbcType="INTEGER" property="creManagerId" />
+    <result column="upd_manager_id" jdbcType="INTEGER" property="updManagerId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    goods_detail_id, productId, name, img_path, create_time, update_time, cre_manager_id, 
+    upd_manager_id
+  </sql>
+  <select id="selectByExample" parameterType="com.hlbrc.entity.GoodsdetailExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from goodsdetail
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from goodsdetail
+    where goods_detail_id = #{goodsDetailId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from goodsdetail
+    where goods_detail_id = #{goodsDetailId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.hlbrc.entity.GoodsdetailExample">
+    delete from goodsdetail
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hlbrc.entity.Goodsdetail">
+    insert into goodsdetail (goods_detail_id, productId, name, 
+      img_path, create_time, update_time, 
+      cre_manager_id, upd_manager_id)
+    values (#{goodsDetailId,jdbcType=INTEGER}, #{productid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{imgPath,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{creManagerId,jdbcType=INTEGER}, #{updManagerId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hlbrc.entity.Goodsdetail">
+    insert into goodsdetail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="goodsDetailId != null">
+        goods_detail_id,
+      </if>
+      <if test="productid != null">
+        productId,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="imgPath != null">
+        img_path,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="creManagerId != null">
+        cre_manager_id,
+      </if>
+      <if test="updManagerId != null">
+        upd_manager_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="goodsDetailId != null">
+        #{goodsDetailId,jdbcType=INTEGER},
+      </if>
+      <if test="productid != null">
+        #{productid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="imgPath != null">
+        #{imgPath,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creManagerId != null">
+        #{creManagerId,jdbcType=INTEGER},
+      </if>
+      <if test="updManagerId != null">
+        #{updManagerId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hlbrc.entity.GoodsdetailExample" resultType="java.lang.Long">
+    select count(*) from goodsdetail
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update goodsdetail
+    <set>
+      <if test="record.goodsDetailId != null">
+        goods_detail_id = #{record.goodsDetailId,jdbcType=INTEGER},
+      </if>
+      <if test="record.productid != null">
+        productId = #{record.productid,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imgPath != null">
+        img_path = #{record.imgPath,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.creManagerId != null">
+        cre_manager_id = #{record.creManagerId,jdbcType=INTEGER},
+      </if>
+      <if test="record.updManagerId != null">
+        upd_manager_id = #{record.updManagerId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update goodsdetail
+    set goods_detail_id = #{record.goodsDetailId,jdbcType=INTEGER},
+      productId = #{record.productid,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      img_path = #{record.imgPath,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      cre_manager_id = #{record.creManagerId,jdbcType=INTEGER},
+      upd_manager_id = #{record.updManagerId,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hlbrc.entity.Goodsdetail">
+    update goodsdetail
+    <set>
+      <if test="productid != null">
+        productId = #{productid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="imgPath != null">
+        img_path = #{imgPath,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creManagerId != null">
+        cre_manager_id = #{creManagerId,jdbcType=INTEGER},
+      </if>
+      <if test="updManagerId != null">
+        upd_manager_id = #{updManagerId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where goods_detail_id = #{goodsDetailId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hlbrc.entity.Goodsdetail">
+    update goodsdetail
+    set productId = #{productid,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      img_path = #{imgPath,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      cre_manager_id = #{creManagerId,jdbcType=INTEGER},
+      upd_manager_id = #{updManagerId,jdbcType=INTEGER}
+    where goods_detail_id = #{goodsDetailId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -24,6 +24,19 @@ public class Manager implements Serializable{
 	private String manager_idcard_num;
 	private String manager_img_path;
 	private int manager_context_num;
+	private int manager_state;
+	private String fixed_line_telephonne;
+	private String from_enterprise_id;
+	private Timestamp first_login_time;
+	private String first_login_ip;
+	private Timestamp last_login_time;
+	private String last_login_ip;
+	private int is_effective_account;
+	private int is_tax;
+	private int disable;
+	private int account_group_id;
+	private double order_refund_rate;
+	private double reward_amount_rate;
 	private String manager_context_finally;
 	private Timestamp manager_regist_time;
 	private District district;
@@ -138,6 +151,84 @@ public class Manager implements Serializable{
 	}
 	public void setProfileimg(List<Profileimg> profileimg) {
 		this.profileimg = profileimg;
+	}
+	public int getManager_state() {
+		return manager_state;
+	}
+	public void setManager_state(int manager_state) {
+		this.manager_state = manager_state;
+	}
+	public String getFixed_line_telephonne() {
+		return fixed_line_telephonne;
+	}
+	public void setFixed_line_telephonne(String fixed_line_telephonne) {
+		this.fixed_line_telephonne = fixed_line_telephonne;
+	}
+	public String getFrom_enterprise_id() {
+		return from_enterprise_id;
+	}
+	public void setFrom_enterprise_id(String from_enterprise_id) {
+		this.from_enterprise_id = from_enterprise_id;
+	}
+	public Timestamp getFirst_login_time() {
+		return first_login_time;
+	}
+	public void setFirst_login_time(Timestamp first_login_time) {
+		this.first_login_time = first_login_time;
+	}
+	public String getFirst_login_ip() {
+		return first_login_ip;
+	}
+	public void setFirst_login_ip(String first_login_ip) {
+		this.first_login_ip = first_login_ip;
+	}
+	public Timestamp getLast_login_time() {
+		return last_login_time;
+	}
+	public void setLast_login_time(Timestamp last_login_time) {
+		this.last_login_time = last_login_time;
+	}
+	public String getLast_login_ip() {
+		return last_login_ip;
+	}
+	public void setLast_login_ip(String last_login_ip) {
+		this.last_login_ip = last_login_ip;
+	}
+	public int getIs_effective_account() {
+		return is_effective_account;
+	}
+	public void setIs_effective_account(int is_effective_account) {
+		this.is_effective_account = is_effective_account;
+	}
+	public int getIs_tax() {
+		return is_tax;
+	}
+	public void setIs_tax(int is_tax) {
+		this.is_tax = is_tax;
+	}
+	public int getDisable() {
+		return disable;
+	}
+	public void setDisable(int disable) {
+		this.disable = disable;
+	}
+	public int getAccount_group_id() {
+		return account_group_id;
+	}
+	public void setAccount_group_id(int account_group_id) {
+		this.account_group_id = account_group_id;
+	}
+	public double getOrder_refund_rate() {
+		return order_refund_rate;
+	}
+	public void setOrder_refund_rate(double order_refund_rate) {
+		this.order_refund_rate = order_refund_rate;
+	}
+	public double getReward_amount_rate() {
+		return reward_amount_rate;
+	}
+	public void setReward_amount_rate(double reward_amount_rate) {
+		this.reward_amount_rate = reward_amount_rate;
 	}
 	
 }
