@@ -33,6 +33,8 @@
     <result column="disable" jdbcType="INTEGER" property="disable" />
     <result column="order_refund_rate" jdbcType="DOUBLE" property="orderRefundRate" />
     <result column="reward_amount_rate" jdbcType="DOUBLE" property="rewardAmountRate" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -98,7 +100,7 @@
     user_consume, user_integral, user_consume_number, user_regist_time, upd_manager_id, 
     cre_manager_id, user_no, fixed_line_telephonne, from_enterprise_id, first_login_time, 
     first_login_ip, last_login_time, last_login_ip, is_tax, disable, order_refund_rate, 
-    reward_amount_rate
+    reward_amount_rate, password, email
   </sql>
   <select id="selectByExample" parameterType="com.hlbrc.entity.UserExample" resultMap="BaseResultMap">
     select
@@ -141,7 +143,8 @@
       fixed_line_telephonne, from_enterprise_id, 
       first_login_time, first_login_ip, last_login_time, 
       last_login_ip, is_tax, disable, 
-      order_refund_rate, reward_amount_rate)
+      order_refund_rate, reward_amount_rate, password, 
+      email)
     values (#{userId,jdbcType=INTEGER}, #{storeId,jdbcType=INTEGER}, #{accountGroupId,jdbcType=INTEGER}, 
       #{userName,jdbcType=VARCHAR}, #{userSex,jdbcType=VARCHAR}, #{userAge,jdbcType=INTEGER}, 
       #{userBirthTime,jdbcType=VARCHAR}, #{userTel,jdbcType=VARCHAR}, #{userIdcardNum,jdbcType=VARCHAR}, 
@@ -152,7 +155,8 @@
       #{fixedLineTelephonne,jdbcType=VARCHAR}, #{fromEnterpriseId,jdbcType=VARCHAR}, 
       #{firstLoginTime,jdbcType=TIMESTAMP}, #{firstLoginIp,jdbcType=VARCHAR}, #{lastLoginTime,jdbcType=TIMESTAMP}, 
       #{lastLoginIp,jdbcType=VARCHAR}, #{isTax,jdbcType=INTEGER}, #{disable,jdbcType=INTEGER}, 
-      #{orderRefundRate,jdbcType=DOUBLE}, #{rewardAmountRate,jdbcType=DOUBLE})
+      #{orderRefundRate,jdbcType=DOUBLE}, #{rewardAmountRate,jdbcType=DOUBLE}, #{password,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.hlbrc.entity.User">
     insert into user
@@ -250,6 +254,12 @@
       <if test="rewardAmountRate != null">
         reward_amount_rate,
       </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="userId != null">
@@ -344,6 +354,12 @@
       </if>
       <if test="rewardAmountRate != null">
         #{rewardAmountRate,jdbcType=DOUBLE},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -449,6 +465,12 @@
       <if test="record.rewardAmountRate != null">
         reward_amount_rate = #{record.rewardAmountRate,jdbcType=DOUBLE},
       </if>
+      <if test="record.password != null">
+        password = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null">
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -486,7 +508,9 @@
       is_tax = #{record.isTax,jdbcType=INTEGER},
       disable = #{record.disable,jdbcType=INTEGER},
       order_refund_rate = #{record.orderRefundRate,jdbcType=DOUBLE},
-      reward_amount_rate = #{record.rewardAmountRate,jdbcType=DOUBLE}
+      reward_amount_rate = #{record.rewardAmountRate,jdbcType=DOUBLE},
+      password = #{record.password,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -584,6 +608,12 @@
       <if test="rewardAmountRate != null">
         reward_amount_rate = #{rewardAmountRate,jdbcType=DOUBLE},
       </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
     </set>
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
@@ -618,7 +648,9 @@
       is_tax = #{isTax,jdbcType=INTEGER},
       disable = #{disable,jdbcType=INTEGER},
       order_refund_rate = #{orderRefundRate,jdbcType=DOUBLE},
-      reward_amount_rate = #{rewardAmountRate,jdbcType=DOUBLE}
+      reward_amount_rate = #{rewardAmountRate,jdbcType=DOUBLE},
+      password = #{password,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR}
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
 </mapper>

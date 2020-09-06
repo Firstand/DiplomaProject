@@ -183,6 +183,30 @@ public class ChattingRecordsIO {
 	    return xmlObject; 
 	}
 	/**
+	 * 读取txt文件
+	 * @param user_filename
+	 * @param fileName
+	 * @return
+	 * @throws IOException 
+	 */
+	public String readFile(String user_filename,String fileName) throws IOException {
+		String filePath = getFilePath(user_filename,fileName);
+		String context = "";
+		 try {
+		    	//读取txt文件
+		        BufferedReader bf = new BufferedReader(new FileReader(filePath));
+		        String line = "";
+		        while((line = bf.readLine()) != null){
+		        	context+=line;
+		        }
+		        bf.close();
+		    } catch (IOException e) {
+		    	throw new IOException("读取文件："+filePath+"失败！\n"+e.getMessage());
+		    }
+		return context;
+	}
+	
+	/**
 	 * 读取文件内容
 	 * @param filePath
 	 * @return 聊天记录集合
@@ -463,13 +487,17 @@ public class ChattingRecordsIO {
 //	  //调用清除文件内容
 ////	  new ChattingRecordsIO().clearFile(fileName);
 ////	  System.out.println(new ChattingRecordsIO().ReadFile(fileName));
-		JSONObject content = new JSONObject();
-		content.put("cadid", "123");
-		content.put("name", "啊哈的角色");
-		content.put("ahs", "ashdka");
-		List<JSONObject> list = new ArrayList<JSONObject>();
-		list.add(content);
-		new ChattingRecordsIO().writeFileByBytesWx("",list.toString());
+		
+//		JSONObject content = new JSONObject();
+//		content.put("cadid", "123");
+//		content.put("name", "啊哈的角色");
+//		content.put("ahs", "ashdka");
+//		List<JSONObject> list = new ArrayList<JSONObject>();
+//		list.add(content);
+//		new ChattingRecordsIO().writeFileByBytesWx("",list.toString());
+		
+//		new ChattingRecordsIO().writeFileByBytes("Super", "my_domain_name", "https://hlbrc.utools.club");
+		System.out.println(new ChattingRecordsIO().readFile("Super", "my_domain_name"));
 	}
 
 }

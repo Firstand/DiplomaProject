@@ -7,4 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into pro_file_img (pro_file_img_path,pro_file_img_type,manager_id,creat_time)
 		values(#{pro_file_img_path},#{pro_file_img_type},#{manager.manager_id},#{creat_time})
 	</insert>
+	<select id="queryImg" resultType="Profileimg">
+		select * from pro_file_img where user_id=#{user_id}
+	</select>
 </mapper>

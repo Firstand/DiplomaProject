@@ -22,6 +22,7 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import javax.mail.internet.MimeUtility;
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.mail.HtmlEmail;
 
@@ -30,7 +31,7 @@ public class QqEmailSendMessage {
 	 * 纯文本
 	 * @return
 	 */
-	public static boolean sendEmail(String receiver){
+	public static boolean sendEmail(String receiver,HttpServletRequest request){
 	    try {
 	        //创建网页邮箱对象
 		    HtmlEmail email=new HtmlEmail();
@@ -45,8 +46,11 @@ public class QqEmailSendMessage {
 		    email.setFrom("hlbrc.diplomaproject@foxmail.com");
 		    //设置邮件接收人
 		    email.addTo(receiver);
+		    int mobile_code1 = (int)((Math.random()*9+1)*100000);
+		    String mobile_code = mobile_code1+"";
+		    request.getSession().setAttribute("appEmailVerifyCode", mobile_code);
 		    //设置发送的内容
-		    email.setContent("大哥，我想你了，你想我没？", "text/html;charset=UTF-8");
+		    email.setContent("您的验证码是：" + mobile_code + "。请不要把验证码泄露给其他人。", "text/html;charset=UTF-8");
 		    //设置邮箱标题
 		    email.setSubject("会员管理系统");
 		    //执行邮件发送

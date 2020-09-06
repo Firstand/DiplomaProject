@@ -296,7 +296,18 @@
 		    <artifactId>mail</artifactId>
 		    <version>1.4.7</version>
 		</dependency>
-        
+        <!-- https://mvnrepository.com/artifact/com.alipay.api/k12-alipay-sdk -->
+		<dependency>
+		    <groupId>com.alipay.api</groupId>
+		    <artifactId>k12-alipay-sdk</artifactId>
+		    <version>0.0.1-beta</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.alipay.sdk/alipay-sdk-java -->
+		<dependency>
+		    <groupId>com.alipay.sdk</groupId>
+		    <artifactId>alipay-sdk-java</artifactId>
+		    <version>4.10.119.ALL</version>
+		</dependency>
   </dependencies>
   <build>
     <finalName>DiplomaProject</finalName>
