@@ -255,7 +255,7 @@ public class AppBiz {
 			criteria.andUserTelEqualTo(obj.getString("Phone"));
 			criteria.andPasswordEqualTo(obj.getString("Password"));
 			List<User> list = user_mapper.selectByExample(example);
-			if(list!=null) {
+			if(list!=null&&list.size()>0) {
 				for(User user:list) {
 					obj.accumulate("msg", AppEnum.SUCCEED);
 					obj.accumulate("UserAccountID", user.getUserId());
@@ -338,7 +338,7 @@ public class AppBiz {
 			obj = JSONObject.fromObject(message);
 			criteria.andEmailEqualTo(obj.getString("Phone"));
 			List<User> list = user_mapper.selectByExample(example);
-			if(list==null) {
+			if(list!=null&&list.size()>0) {
 				User user = new User();
 				user.setAccountGroupId(1);
 				user.setFromEnterpriseId(obj.getString("FromEnterpriseID"));
@@ -399,7 +399,7 @@ public class AppBiz {
 			obj = JSONObject.fromObject(message);
 			criteria.andUserTelEqualTo(obj.getString("Phone"));
 			List<User> list = user_mapper.selectByExample(example);
-			if(list!=null) {
+			if(list!=null&&list.size()>0) {
 				criteria.andPasswordEqualTo(obj.getString("Password"));
 				list = user_mapper.selectByExample(example);
 				if(list!=null) {
@@ -466,7 +466,7 @@ public class AppBiz {
 			obj = JSONObject.fromObject(message);
 			criteria.andEmailEqualTo(obj.getString("Email"));
 			List<User> list = user_mapper.selectByExample(example);
-			if(list==null) {
+			if(list==null&&list.size()>0) {
 				Sendsms s = new Sendsms();
 				int d = s.send(obj.getString("Phone"),request);
 				String random = (String)request.getSession().getAttribute("RANDOMCODEKEY");
@@ -599,6 +599,13 @@ public class AppBiz {
 		return obj.toString();
 	}
 	
+	/**
+	 * 订单支付处理
+	 * @param message
+	 * @param session
+	 * @return
+	 * @throws AlipayApiException
+	 */
 	public Object orderDispose(String message,HttpSession session) throws AlipayApiException {
 		if(message!=null&&!"".equals(message)) {
 			String APP_ID="2016101700706515";
