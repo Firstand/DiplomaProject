@@ -22,7 +22,7 @@ import com.hlbrc.action.WebSocketService;
 */
 public class TimerUtil implements ServletContextListener {
 	public static void main(String[] args) {
-//		timer1();
+		timer1();
 //		timer2();
 //		timer3();
 //		timer4();
@@ -38,6 +38,8 @@ public class TimerUtil implements ServletContextListener {
 			@Override
 			public void run() {
 				System.out.println("----设定要指定任务-----");
+				System.gc();
+				cancel();
 			}
 		},2000);
 	}

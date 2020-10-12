@@ -35,6 +35,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	<!--alerts CSS -->
 	<link href="vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
+	
+	<!-- loading CSS -->
+	<link href="dist/css/css_zy/waitMe.css"  rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -1740,6 +1743,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	     	});
 		}
 	</script>
+	<script src="dist/videos/js_zy/waitMe.js" type="text/javascript"></script>
+	<script src="dist/videos/js_zy/base-loading.js" type="text/javascript"></script>
 </body>
 
 </html>

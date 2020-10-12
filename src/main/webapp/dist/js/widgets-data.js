@@ -132,10 +132,10 @@ $(document).ready(function(){
 				accessToken: '3434068161.50cce2b.797965f78a3e4269839dd8e3b4ae65a4',
 				clientID: '50cce2bc21ad40a7939d71ed89f63a14'
 			};
-		$('.instagram-lite').spectragram('getUserFeed', {
-			query: 'themenerds', //this gets adrianengine's photo feed
-			size: 'max',
-			max: 4});
+		// $('.instagram-lite').spectragram('getUserFeed', {
+		// 	query: 'themenerds', //this gets adrianengine's photo feed
+		// 	size: 'max',
+		// 	max: 4});
 	}	
 	if( $('#tweets_fetch').length > 0 ){
 		var configList = {

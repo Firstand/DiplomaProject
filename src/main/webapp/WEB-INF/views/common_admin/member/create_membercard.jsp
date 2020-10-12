@@ -1685,5 +1685,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		     	});
 			}
 		</script>
+		<script src="dist/videos/js_zy/waitMe.js" type="text/javascript"></script>
+		<script src="dist/videos/js_zy/base-loading.js" type="text/javascript"></script>
 	</body>
 </html>

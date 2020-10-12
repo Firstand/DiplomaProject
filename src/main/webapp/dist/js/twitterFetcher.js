@@ -169,13 +169,15 @@
               config.list.listSlug + '&screen_name=' + config.list.screenName +
               '&suppress_response_codes=true&lang=' + (config.lang || lang) +
               '&rnd=' + Math.random();
-        } else if (config.profile !== undefined) {
-          script.src = 'https://syndication.twitter.com/timeline/profile?' +
-              'callback=__twttrf.callback&dnt=false' +
-              '&screen_name=' + config.profile.screenName +
-              '&suppress_response_codes=true&lang=' + (config.lang || lang) +
-              '&rnd=' + Math.random();
-        } else if (config.likes !== undefined) {
+        } 
+        else if (config.profile !== undefined) {
+          // script.src = 'https://syndication.twitter.com/timeline/profile?' +
+          //     'callback=__twttrf.callback&dnt=false' +
+          //     '&screen_name=' + config.profile.screenName +
+          //     '&suppress_response_codes=true&lang=' + (config.lang || lang) +
+          //     '&rnd=' + Math.random();
+        } 
+        else if (config.likes !== undefined) {
           script.src = 'https://syndication.twitter.com/timeline/likes?' +
               'callback=__twttrf.callback&dnt=false' +
               '&screen_name=' + config.likes.screenName +
