@@ -187,7 +187,7 @@ public class MajorAction {
 	}
 	
 	/**
-	 * 忘记密码
+	 * 忘记密码页面显示
 	 * @param model
 	 * @return
 	 */
@@ -196,6 +196,18 @@ public class MajorAction {
 		return "publics/forgot-password.jsp";
 	}
 	
+	/**
+	 * 忘记密码
+	 * @param u_tel
+	 * @param flag
+	 * @param u_tel1
+	 * @param u_tel2
+	 * @param u_verify
+	 * @param pwd
+	 * @param session
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(path="forgot_pwd",method=RequestMethod.POST)
 	public String forgot_pwd(String u_tel,String flag,String u_tel1,String u_tel2,String u_verify,String pwd,HttpSession session,Model model) {
 		//数据回显初始化
@@ -284,6 +296,13 @@ public class MajorAction {
 		return "common_admin/index.jsp";
 		
 	}
+	/**
+	 * 锁定页面显示
+	 * @param httpsession
+	 * @param request
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(path="locked",method=RequestMethod.GET)
 	public String locked(HttpSession httpsession,HttpServletRequest request,Model model) {
 		Manager m = (Manager)httpsession.getAttribute("manager");
@@ -298,6 +317,15 @@ public class MajorAction {
 			return "publics/locked.jsp";
 		}
 	}
+	
+	/**
+	 * 锁定
+	 * @param pwd
+	 * @param httpsession
+	 * @param request
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(path="locked",method=RequestMethod.POST)
 	public String locked(String pwd,HttpSession httpsession,HttpServletRequest request,Model model) {
 		Manager m = (Manager)httpsession.getAttribute("manager");
@@ -319,6 +347,10 @@ public class MajorAction {
 			}
 		}
 	}
+	
+	/**
+	 * 修改密码页面显示
+	 */
 	@RequestMapping(path="reset_password",method=RequestMethod.GET)
 	public String reset_password(HttpSession httpsession,Model model) {
 		Manager m = (Manager)httpsession.getAttribute("manager");
@@ -330,6 +362,15 @@ public class MajorAction {
 			return "publics/reset-password.jsp";
 		}
 	}
+	/**
+	 * 修改密码
+	 * @param oldpwd
+	 * @param newpwd
+	 * @param httpsession
+	 * @param request
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(path="reset_password",method=RequestMethod.POST)
 	public String reset_password(String oldpwd,String newpwd,HttpSession httpsession,HttpServletRequest request,Model model) {
 		Manager m = (Manager)httpsession.getAttribute("manager");
@@ -362,7 +403,11 @@ public class MajorAction {
 			
 		}
 	}
-	//注销登录
+	/**
+	 * 注销登录
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("logout")
 	public String logout(HttpServletRequest request) {
 		request.getSession().invalidate();

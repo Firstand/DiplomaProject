@@ -161,7 +161,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<update id="update" parameterType="Manager">
-  		 update manager set manager_name=#{manager_name},manager_age=#{manager_age},manager_sex=#{manager_sex},manager_password=#{manager_password},manager_birth_time=#{manager_birth_time},manager_email=#{manager_email},manager_idcard_num=#{manager_idcard_num},dis_id=#{district.dis_id},manager_img_path=#{manager_img_path},manager_tel=#{manager_tel} where manager_id=#{manager_id}
+  		 update manager set manager_name=#{manager_name},manager_age=#{manager_age},manager_sex=#{manager_sex},manager_password=#{manager_password},manager_birth_time=#{manager_birth_time},manager_email=#{manager_email},manager_idcard_num=#{manager_idcard_num},dis_id=#{district.disId},manager_img_path=#{manager_img_path},manager_tel=#{manager_tel} where manager_id=#{manager_id}
 	</update>
 	
 	<update id="creatMessageTable" parameterType="String">

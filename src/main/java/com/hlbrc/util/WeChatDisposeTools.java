@@ -229,7 +229,7 @@ public class WeChatDisposeTools{
         	WeChatToken token = getToken();
             String accessToken = token.getAccessToken();//使用上面的方式获取到token
            // 上传文件请求路径
-           String action = "http://api.weixin.qq.com/cgi-bin/media/uploadimg?access_token="
+           String action = "https://api.weixin.qq.com/cgi-bin/media/uploadimg?access_token="
                    + accessToken + "&type=image";
 
            URL url = new URL(action);
